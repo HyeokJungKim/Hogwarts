@@ -1,7 +1,22 @@
 import React from "react";
+import CharacterCard from './CharacterCard'
 
 const House = props => {
-  return <h1>We Living</h1>;
+  let characters = props.characters.map(character =>
+    (<CharacterCard
+      key={character.id}
+      character={character}
+      image={character.image2}
+    />)
+  )
+  return (
+    <div>
+      <h1>{props.house}</h1>
+      <ul>
+        {characters}
+      </ul>
+    </div>
+  );
 };
 
 export default House;
