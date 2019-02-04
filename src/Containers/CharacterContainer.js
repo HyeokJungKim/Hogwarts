@@ -4,8 +4,10 @@ import UpdateForm from '../Components/UpdateForm'
 
 export default class CharacterContainer extends React.Component {
 
-  handleClick = (character, func) => {
+  renderAdditionalInfo = (character, func) => {
     return(
+      // Returns a component with info being passed down as props
+      // UpdateForm is receiving this information
     <UpdateForm
       character={character}
       houses={this.props.houses}
@@ -17,10 +19,11 @@ export default class CharacterContainer extends React.Component {
   render() {
     // [{}, {}, {}] => [<>, <>, <>]
     const mappedArray = this.props.characters.map(character => (
-      <CharacterCard key={character.id}
+      <CharacterCard
+        key={character.id}
         character={character}
         image={character.image1}
-        handleClick={this.handleClick}
+        renderAdditionalInfo={this.renderAdditionalInfo}
       />)
     )
 
